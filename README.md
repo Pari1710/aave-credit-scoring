@@ -1,57 +1,116 @@
-# DeFi Credit Scoring - Aave V2
+# 🧠 Aave Credit Scoring Engine
 
-This project assigns credit scores (0–1000) to wallets interacting with the Aave V2 protocol based on their transaction history.
+This project builds a credit scoring model for DeFi wallets using transaction-level data from the Aave V2 protocol. The goal is to assign each wallet a credit score between **0 and 1000**, where:
 
----
-
-## 📊 Objective
-
-To develop a one-step machine learning or heuristic model that:
-- Reads raw Aave V2 transaction data in JSON format.
-- Extracts key behavioral features for each wallet.
-- Assigns a credit score from 0 (risky) to 1000 (reliable).
+- **Higher scores** indicate more reliable and responsible usage.
+- **Lower scores** may reflect risky, bot-like, or exploitative behavior.
 
 ---
 
-## 🛠️ Features Engineered
+## 📂 Folder Structure
 
-For each wallet:
-- Number and USD value of actions: `deposit`, `borrow`, `repay`, `redeem`, `liquidationcall`
-- Ratios like `repay/borrow`, `redeem/deposit`
-- Liquidation flag
-- Activity duration (first to last transaction)
+aave-credit-scoring/
+├── data/
+│ └── user-wallet-transactions.json # Sample transaction dataset
+├── src/
+│ └── generate_scores.py # Main script to compute scores
+├── wallet_scores.csv # Output CSV with wallet scores
+├── score_distribution.png # Bar chart of score distribution
+├── README.md # Project overview (this file)
+├── analysis.md # Score behavior analysis
+└── requirements.txt # Python dependencies
 
----
-
-## 🧠 Scoring Logic
-
-Heuristic scoring based on behavioral traits:
-- +100 if repay/borrow ratio > 0.9
-- -100 if repay/borrow ratio < 0.3
-- -200 if liquidation occurred
-- +50 for activity > 90 days
-- +50 if redeem/deposit ratio > 0.5
-
-Final score is clipped between **0 and 1000**.
 
 ---
 
-## ▶️ How to Run
+## ⚙️ How It Works
 
-1. **Install Requirements**
-   ```bash
-   pip install -r requirements.txt
+1. **Input**: A JSON file containing raw user transactions (deposits, borrows, repays, etc.).
+2. **Feature Engineering**:
+   - Repay-to-borrow ratio
+   - Redeem-to-deposit ratio
+   - Wallet active time (based on first and last transaction)
+   - Liquidation penalty
+3. **Scoring Logic**:
+   - +300 for repay/borrow ratio
+   - +100 for redeem/deposit ratio
+   - +100 for longer activity period
+   - -200 for any liquidation event
+4. **Output**: Each wallet is assigned a score between 0 and 1000 and saved to `wallet_scores.csv`.
 
 ---
 
-2. **Place your JSON file at data/user-wallet-transactions.json**
+## 📊 Example Output
+
+A sample of the final output looks like:
+
+| userWallet                                 | creditScore |
+|-------------------------------------------|-------------|
+| 0x00000000001accfa9cef68cf5371a23025b6d4b6 | 400         |
+| 0x0000000000e189dd664b9ab08a33c4839953852c | 450         |
+| 0x000000000a38444e0a6e37d3b630d7e855a7cb13 | 600         |
+
+The accompanying chart (`score_distribution.png`) provides a visual breakdown of wallet scores.
 
 ---
 
-3. **Run the script**
+## 🖥️ How to Run
+
+### 1. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+
+### 2. Run the Script
+```bash
+python src/generate_scores.py
+Make sure data/user-wallet-transactions.json is present
+
+Output: wallet_scores.csv and score_distribution.png
 
 ---
 
-4. **OUTPUT**
-   wallet_scores.csv — Credit scores for each wallet
-   score_distribution.png — Visual distribution of scores
+## 📈 Analysis
+See analysis.md for:
+
+Score distribution breakdown
+
+Behavioral insights across credit ranges (0–1000)
+
+Observations on trustworthy vs risky wallets
+
+---
+
+## 🧪 Sample Use Cases
+Building DeFi-native credit systems
+
+Identifying trustworthy wallets for airdrops
+
+Filtering out bot or exploitative behaviors
+
+---
+
+## 🛠️ Built With
+Python 3.12
+
+Pandas
+
+Matplotlib
+
+---
+
+📫 Contact
+For questions or collaboration, feel free to reach out via GitHub Issues or connect at @Pari1710.
+
+---
+
+### ✅ Instructions to Add It
+
+1. Open your GitHub repo  
+2. Click `README.md` → then ✏️ (Edit this file)  
+3. Paste the above content  
+4. Click **Commit changes**
+
+---
+
+Let me know if you want a matching `analysis.md` or help writing your GitHub project description!
