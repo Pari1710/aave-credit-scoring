@@ -9,15 +9,16 @@ This project builds a credit scoring model for DeFi wallets using transaction-le
 
 ## 📂 Folder Structure
 
-```mermaid
-graph TD
-    A[Start] --> B(user-wallet-transactions.json);
-    B --> C{generate_scores.py};
-    C -- Computes Scores --> D(wallet_scores.csv);
-    C -- Generates Plot --> E(score_distribution.png);
-    D --> F[Analysis];
-    E --> F[Analysis];
-    F --> G[End];
+aave-credit-scoring/
+├── data/
+│ └── user-wallet-transactions.json # Sample transaction dataset
+├── src/
+│ └── generate_scores.py # Main script to compute scores
+├── wallet_scores.csv # Output CSV with wallet scores
+├── score_distribution.png # Bar chart of score distribution
+├── README.md # Project overview (this file)
+├── analysis.md # Score behavior analysis
+└── requirements.txt # Python dependencies
 
 
 ---
