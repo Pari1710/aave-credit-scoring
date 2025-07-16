@@ -56,61 +56,59 @@ The accompanying chart (`score_distribution.png`) provides a visual breakdown of
 
 ## 🖥️ How to Run
 
-### 1. Install Dependencies
+1.  **Install Dependencies**
 
-```bash
-pip install -r requirements.txt
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-### 2. Run the Script
+2.  **Run the Script**
 
-```bash
-python src/generate_scores.py
+    ```bash
+    python src/generate_scores.py
+    ```
 
-Output: wallet_scores.csv and score_distribution.png
+    **Output:** `wallet_scores.csv` and `score_distribution.png`
 
 ---
 
 ## 📈 Analysis
-See analysis.md for:
 
-Score distribution breakdown
+See [`analysis.md`](analysis.md) for:
 
-Behavioral insights across credit ranges (0–1000)
-
-Observations on trustworthy vs risky wallets
+* Score distribution breakdown
+* Behavioral insights across credit ranges (0–1000)
+* Observations on trustworthy vs risky wallets
 
 ---
 
 ## 🧪 Sample Use Cases
-Building DeFi-native credit systems
 
-Identifying trustworthy wallets for airdrops
-
-Filtering out bot or exploitative behaviors
+* Building DeFi-native credit systems
+* Identifying trustworthy wallets for airdrops
+* Filtering out bot or exploitative behaviors
 
 ---
 
 ## 🛠️ Built With
-Python 3.12
 
-Pandas
-
-Matplotlib
+* Python 3.12
+* Pandas
+* Matplotlib
 
 ---
 
-📫 Contact
-For questions or collaboration, feel free to reach out via GitHub Issues or connect at @Pari1710.
+## 📫 Contact
+
+For questions or collaboration, feel free to reach out via GitHub Issues or connect at [@Pari1710](https://github.com/Pari1710).
 
 ---
 
 ### ✅ Instructions to Add It
 
-1. Open your GitHub repo  
-2. Click `README.md` → then ✏️ (Edit this file)  
-3. Paste the above content  
-4. Click **Commit changes**
+1.  Open your GitHub repo
+2.  Click `README.md` → then ✏️ (Edit this file)
+3.  Paste the above content
+4.  Click **Commit changes**
 
 ---
-
-Let me know if you want a matching `analysis.md` or help writing your GitHub project description!
