@@ -1,50 +1,69 @@
-
----
-
-## 📊 `analysis.md`
-
-Create `analysis.md` in the same folder and paste:
-
-```markdown
 # 📊 Wallet Score Analysis
 
-This document analyzes the results of the scoring system applied to Aave V2 user wallets.
+This document provides insights into the distribution and behavior of DeFi wallets after applying the credit scoring model to Aave V2 transaction data.
 
 ---
 
-## 🔢 Score Distribution
+## 🧮 Score Distribution
 
-| Score Range | Wallet Count | Risk Level |
-|-------------|--------------|------------|
-| 0–100       | ❌ High Risk  |
-| 100–200     | ❌ High Risk  |
-| 200–300     | ⚠️ Risky      |
-| 300–400     | ⚠️ Risky      |
-| 400–500     | ⚖️ Average    |
-| 500–600     | ⚖️ Average    |
-| 600–700     | ✅ Reliable   |
-| 700–800     | ✅ Reliable   |
-| 800–900     | 🟢 Very Good  |
-| 900–1000    | 🟢 Excellent  |
+The wallet scores were grouped into the following bands:
 
-(Exact values visible in `score_distribution.png`)
+- **0–100**
+- **100–200**
+- **200–300**
+- **300–400**
+- **400–500**
+- **500–600**
+- **600–700**
+- **700–800**
+- **800–900**
+- **900–1000**
 
----
+### 📈 Bar Chart: Score Distribution
 
-## 🟥 Low Score Behaviors (0–300)
-- High liquidation count
-- Low repay-to-borrow ratio (<0.3)
-- Many borrow events, very few repayments
-- Short active periods (e.g. < 7 days)
+A bar chart (`score_distribution.png`) was generated to visualize the count of wallets in each score band.
 
-## 🟩 High Score Behaviors (700–1000)
-- Repaid nearly all loans (repay/borrow > 0.9)
-- Consistent activity across weeks/months
-- Regular deposits and redemptions
-- Never liquidated
+**Key Observations:**
+- 🔵 **Most wallets fall in the 400–499 range**, with this band containing the **highest number of wallets** (~2500+).
+- 🟢 The **600–699 band** is the second most populated, suggesting moderate credit behavior.
+- 🟠 The **500–599 band** shows a smaller but still relevant count.
+- 🔴 Very few wallets fall below 300 or above 700, indicating **extremely poor or extremely good behavior is rare**.
 
 ---
 
-## 📈 Score Chart
+## 🔍 Behavior by Score Range
 
-![Score Distribution](score_distribution.png)
+### 🟥 Low Score Range (0–300)
+- Wallets in this range often:
+  - Had **liquidations**
+  - Showed **poor repay-to-borrow** or **redeem-to-deposit ratios**
+  - Were active for **very short durations**
+- Likely to be **bots, risky actors, or abusers of the system**
+
+### 🟡 Mid Score Range (400–600)
+- Majority of wallets fall here.
+- These wallets show:
+  - **Moderate or good repayment behavior**
+  - Some red flags but generally consistent participation
+  - Healthy ratios but **shorter active windows**
+
+### 🟢 High Score Range (600–800+)
+- Wallets in this group:
+  - Showed **excellent repayment and redemption behavior**
+  - Had **no liquidation calls**
+  - Were active over a **longer time period**
+- Ideal candidates for **credit delegation** or **future DeFi airdrops**
+
+---
+
+## ✅ Summary
+
+The score distribution highlights the **effectiveness of transaction behavior as a proxy for creditworthiness**. By combining multiple on-chain features, we created a system that distinguishes between:
+
+- Trustworthy and consistent users
+- Irregular or bot-like patterns
+- Abusive or high-risk behavior
+
+---
+
+📁 For further details, check the scoring logic in [`src/generate_scores.py`](./src/generate_scores.py).
