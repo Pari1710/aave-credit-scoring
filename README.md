@@ -131,12 +131,3 @@ See [`analysis.md`](analysis.md) for:
 For questions or collaboration, feel free to reach out via GitHub Issues or connect at [@Pari1710](https://github.com/Pari1710).
 
 ---
-
-### ✅ Instructions to Add It
-
-1.  Open your GitHub repo
-2.  Click `README.md` → then ✏️ (Edit this file)
-3.  Paste the above content
-4.  Click **Commit changes**
-
----
