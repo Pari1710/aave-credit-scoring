@@ -62,9 +62,9 @@ The accompanying chart (`score_distribution.png`) provides a visual breakdown of
 pip install -r requirements.txt
 
 ### 2. Run the Script
+
 ```bash
 python src/generate_scores.py
-Make sure data/user-wallet-transactions.json is present
 
 Output: wallet_scores.csv and score_distribution.png
 
