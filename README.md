@@ -20,6 +20,34 @@ aave-credit-scoring/
 ├── analysis.md # Score behavior analysis
 └── requirements.txt # Python dependencies
 
+---
+
+## 🧱 System Architecture & Flow
+
+1. **Input Data**
+   - Raw JSON file of Aave V2 transactions  
+   - Stored in: `data/user-wallet-transactions.json`
+
+2. **Score Generation Script**
+   - File: `src/generate_scores.py`
+   - Tasks performed:
+     - Reads and parses JSON
+     - Extracts features from user behavior
+     - Applies scoring logic
+     - Generates:
+       - `wallet_scores.csv` – with scores per wallet
+       - `score_distribution.png` – visual summary
+
+3. **Output Files**
+   - CSV: for future use in analytics or models
+   - PNG: for visual inspection and reporting
+
+This design ensures:
+- 📦 Modular codebase
+- 📈 Scalable scoring logic
+- 🔍 Transparent results for future audits
+
+
 
 ---
 
